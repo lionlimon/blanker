@@ -2,6 +2,10 @@
 
 Blanker is cli for creating typical folders of yours project by blanks
 
+1. Create your blank in directory
+2. Run `blanker NewAwesomeComponent` there
+3. Start writing code
+
 ## Installation
 ```bash 
 sudo npm i blanker -g
