@@ -1,6 +1,6 @@
 # Blanker
 
-Blanker is cli for creating typical folders of yours project by blanks
+Blanker is CLI for creating typical folders of yours project by blanks
 
 1. Create your blank in directory
 2. Run `blanker NewAwesomeComponent` there
