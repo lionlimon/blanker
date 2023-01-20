@@ -2,7 +2,10 @@
   "name": "blanker",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.ts",
+  "main": "build/index.js",
+  "bin": {
+    "blanker": "build/index.js"
+  },
   "scripts": {
     "build": "rimraf ./build && npx tsc",
     "command": "ts-node src/index.ts -d"
