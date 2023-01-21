@@ -13,6 +13,7 @@ const startQuiz = async (params: QuizParameters) => {
     needName,
     needFiles,
   } = params;
+
   const optionalFileListStyled = needFiles ? formatFileList(optionalFileList) : [];
 
   const answers = await inquirer

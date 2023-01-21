@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build": "rimraf ./build && npx tsc",
-    "command": "ts-node src/index.ts -d"
+    "command": "ts-node src/index.ts -d",
+    "format": "npx eslint ./src --fix"
   },
   "author": "Lev Kaplunov <lev.kaplunov@yandex.ru>",
   "license": "ISC",

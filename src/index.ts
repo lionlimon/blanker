@@ -2,7 +2,7 @@
 import { join as joinPath, resolve } from 'path';
 import { copySync } from 'fs-extra';
 import initCommand from './command';
-import FilesHandler from './FilesHandler';
+import BlanksHandler from './BlanksHandler';
 import { DEST_PATH, TEMPLATE_EXAMPLES_PATH } from './constants';
 import { HanlderParameters } from './types';
 import { startMainQuiz, startTemplateQuiz } from './quiz';
@@ -10,11 +10,10 @@ import { startMainQuiz, startTemplateQuiz } from './quiz';
 (async function initApp() {
   // Command parsing
   const { args, options } = initCommand();
-
   const devPath = resolve('./') + TEMPLATE_EXAMPLES_PATH;
   // Current working directory
   const cwd = !options.dev ? process.cwd() : devPath;
-  const templates = FilesHandler.getTemplates(cwd);
+  const templates = BlanksHandler.getBlanks(cwd);
 
   if (!templates.length) throw new Error('Templates are not found');
 
@@ -24,14 +23,14 @@ import { startMainQuiz, startTemplateQuiz } from './quiz';
     : templates[0].name;
 
   const pathToTemplate = joinPath(cwd, templateName);
-  const allOptionalFiles = FilesHandler.getOptionalFiles(pathToTemplate);
+  const allOptionalFiles = BlanksHandler.getOptionalFiles(pathToTemplate);
 
   const parameters = {
     name: args[0] ?? null,
-    selectedOptionalFiles: options.include ?? null,
+    selectedOptionalFiles: options.include ?? [],
   } as HanlderParameters;
 
-  if (!parameters.selectedOptionalFiles) {
+  if (!parameters.selectedOptionalFiles.length) {
     if (options.required) {
       parameters.selectedOptionalFiles = [];
     }
@@ -41,7 +40,7 @@ import { startMainQuiz, startTemplateQuiz } from './quiz';
     }
   }
 
-  const needOptionalFiles = !parameters.selectedOptionalFiles && allOptionalFiles.length > 0;
+  const needOptionalFiles = !parameters.selectedOptionalFiles.length && allOptionalFiles.length > 0;
   const needMainQuiz = !parameters.name || needOptionalFiles;
 
   if (needMainQuiz) {
@@ -59,7 +58,7 @@ import { startMainQuiz, startTemplateQuiz } from './quiz';
 
   copySync(pathToTemplate, dest);
 
-  const filesHandler = new FilesHandler({
+  const filesHandler = new BlanksHandler({
     dest,
     ...parameters,
   });

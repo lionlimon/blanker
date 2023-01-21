@@ -5,6 +5,6 @@ const formatters: Record<string, (value: string) => string> = {
       .replace(/[\s_]+/g, '-')
       .toLowerCase();
   },
-}
+};
 
 export default formatters;
