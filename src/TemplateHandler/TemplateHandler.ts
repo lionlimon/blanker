@@ -2,16 +2,34 @@ import { TemplateHandlerConstructorParams } from './types';
 import formatters from './formatters';
 
 export default class TemplateHandler {
+  /**
+   * Original template
+   */
   private template: string;
 
+  /**
+   * Template for changing
+   */
   output: string;
 
+  /**
+   * hash[value] record for replacing in output
+   */
   private readonly data: Record<string, string>;
 
-  private readonly hashEdges: [string, string];
+  /**
+   * Array with prefix and postfix of hash, '[' and ']' by default
+   */
+  private readonly hashEdges: [prefix: string, postfix: string];
 
+  /**
+   * Regular expression for finding expressions in prefix and postfix ([...])
+   */
   private readonly regExToFindHashes: RegExp;
 
+  /**
+   * Functions set, that are used in formatters part of hash ([some_name:functionName])
+   */
   private readonly formatters = formatters;
 
   constructor(params: TemplateHandlerConstructorParams) {
@@ -25,6 +43,9 @@ export default class TemplateHandler {
     this.regExToFindHashes = new RegExp(`(?<=\\${prf})(.*?)(?=\\${pst})`, 'g');
   }
 
+  /**
+   * Find all hashes in template
+   */
   private findHashes() {
     return Array.from(this.output.matchAll(this.regExToFindHashes));
   }
@@ -57,6 +78,9 @@ export default class TemplateHandler {
     return hashValueRecord;
   }
 
+  /**
+   * Replace all hashes in output
+   */
   replaceHashes() {
     const hashValuesRecord = this.prepareHashValueRecord();
 
