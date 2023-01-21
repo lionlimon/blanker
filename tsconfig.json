@@ -16,7 +16,7 @@
     "baseUrl": "."
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "template-examples"],
+  "exclude": ["node_modules", "template-examples", "build"],
   "lib": ["esnext"],
   "ts-node": {
     "esm": true,

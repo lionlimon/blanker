@@ -3,7 +3,7 @@
   "parser": "@typescript-eslint/parser",
   "extends": ["plugin:@typescript-eslint/recommended", "airbnb-base"],
   "parserOptions": { "ecmaVersion": 2018, "sourceType": "module" },
-  "ignorePatterns": ["template-examples"],
+  "ignorePatterns": ["template-examples", "build"],
   "rules": {
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     "no-param-reassign": 0,
