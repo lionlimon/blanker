@@ -12,7 +12,7 @@ sudo npm i blanker -g
 ```
 
 ## Command
-```bash
+```
 Usage: blanker [options] [name] [dest]
 
 Arguments:
