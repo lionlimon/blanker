@@ -2,6 +2,10 @@
   "name": "blanker",
   "version": "1.0.0",
   "description": "",
+  "repository": "github:lionlimon/blanker",
+  "keywords": [
+    "blank", "project templates", "project blanks", "component template"
+  ],
   "main": "build/index.js",
   "bin": {
     "blanker": "build/index.js"
