@@ -1,0 +1,3 @@
+pascal: [blanker_name:pascalCase]
+camel: [blanker_name:camelCase]
+kebab: [blanker_name:kebabCase]
