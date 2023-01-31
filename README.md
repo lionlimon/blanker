@@ -67,8 +67,32 @@ import [blanker_name] from './[blanker_name].vue';
 export default [blanker_name];
 ```
 
-## Hashes and formatters
+## Template syntax
 
-* `[blanker_name]` - name of your entity  
-* `[*:kebabCase]` - change your value to kebab-case style
+* `[blanker_name]` - name of your entity
+* `[<placeholder_name>:<formatter_name>]` - use forrmating for placeholder
 * `file_name^` - optional files are marked with `^` at the end
+
+
+## Formatters 
+* `[<placeholder_name>:kebabCase]` - change your value to **kebab-case** style
+* `[<placeholder_name>:camelCase]` - change your value to **camelCase** style
+* `[<placeholder_name>:pascalCase]` - change your value to **PascalCase** style
+
+**Example:**  
+Command:
+`blanker SomeName`
+
+Template `[blanker_name].scss`:
+```scss
+.[blanker_name:kebabCase] {
+  /* ... styles ...*/
+}
+```
+
+Result `SomeName.scss`: 
+```scss
+.some-name {
+  /* ... styles ...*/
+}
+```
