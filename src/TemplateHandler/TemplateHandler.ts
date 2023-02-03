@@ -1,5 +1,6 @@
 import { TemplateHandlerConstructorParams } from './types';
 import formatters from './formatters';
+import * as console from 'console';
 
 export default class TemplateHandler {
   /**
@@ -58,20 +59,21 @@ export default class TemplateHandler {
 
     const hashes = this.findHashes();
 
-    hashes.forEach(([hash]) => {
-      if (hashValueRecord[hash]) return; // such value processed
+    hashes.forEach(([hashInner]) => {
+      if (!hashInner) return; // inner is empty: '[]'
+      if (hashValueRecord[hashInner]) return; // such value processed
 
-      if (hash.includes(':')) {
-        const [leftPart, formatter] = hash.split(':');
+      if (hashInner.includes(':')) {
+        const [leftPart, formatter] = hashInner.split(':');
         let value = String(this.data[leftPart]);
 
         if (formatter in this.formatters) {
           value = this.formatters[formatter](value);
         }
 
-        hashValueRecord[hash] = value;
+        hashValueRecord[hashInner] = value;
       } else {
-        hashValueRecord[hash] = String(this.data[hash]);
+        hashValueRecord[hashInner] = String(this.data[hashInner]);
       }
     });
 
