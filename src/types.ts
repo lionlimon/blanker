@@ -1,4 +1,4 @@
-export type HanlderParameters = {
+export type HandlerParameters = {
   name: string,
   selectedOptionalFiles: string[],
 };

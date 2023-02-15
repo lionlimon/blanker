@@ -1,3 +1,4 @@
 export const someMock = [];
 export type SomeItem = { name: string };
 export type SomeArray = SomeItem[];
+const hash = [blanker_name];

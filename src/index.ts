@@ -4,7 +4,7 @@ import { copySync } from 'fs-extra';
 import initCommand from './command';
 import BlanksHandler from './BlanksHandler';
 import { DEST_PATH, TEMPLATE_EXAMPLES_PATH } from './constants';
-import { HanlderParameters } from './types';
+import { HandlerParameters } from './types';
 import { startMainQuiz, startTemplateQuiz } from './quiz';
 
 (async function initApp() {
@@ -28,7 +28,7 @@ import { startMainQuiz, startTemplateQuiz } from './quiz';
   const parameters = {
     name: args[0] ?? null,
     selectedOptionalFiles: options.include ?? [],
-  } as HanlderParameters;
+  } as HandlerParameters;
 
   if (!parameters.selectedOptionalFiles.length) {
     if (options.required) {
