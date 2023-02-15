@@ -20,19 +20,21 @@ class TemplateHandler {
     prepareHashValueRecord() {
         const hashValueRecord = {};
         const hashes = this.findHashes();
-        hashes.forEach(([hash]) => {
-            if (hashValueRecord[hash])
+        hashes.forEach(([hashInner]) => {
+            if (!hashInner)
                 return;
-            if (hash.includes(':')) {
-                const [leftPart, formatter] = hash.split(':');
+            if (hashValueRecord[hashInner])
+                return;
+            if (hashInner.includes(':')) {
+                const [leftPart, formatter] = hashInner.split(':');
                 let value = String(this.data[leftPart]);
                 if (formatter in this.formatters) {
                     value = this.formatters[formatter](value);
                 }
-                hashValueRecord[hash] = value;
+                hashValueRecord[hashInner] = value;
             }
             else {
-                hashValueRecord[hash] = String(this.data[hash]);
+                hashValueRecord[hashInner] = String(this.data[hashInner]);
             }
         });
         return hashValueRecord;

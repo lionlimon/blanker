@@ -8,7 +8,9 @@ const formatters = {
             .toLowerCase();
     },
     camelCase(value) {
-        return value.replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => (index === 0 ? word.toLowerCase() : word.toUpperCase())).replace(/\s+/g, '');
+        return value
+            .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => (index === 0 ? word.toLowerCase() : word.toUpperCase()))
+            .replace(/\s+|-/g, '');
     },
     pascalCase(value) {
         return (value.match(/[a-zA-Z0-9]+/g) || [])
