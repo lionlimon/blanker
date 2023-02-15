@@ -78,7 +78,7 @@ export default class BlanksHandler {
 
     BlanksHandler.getFiles(pathToBlank).forEach((file) => {
       let newName: string | null = null;
-      const oldPath = joinPath(pathToBlank, file.name);
+      let prevPath = joinPath(pathToBlank, file.name);
       const getActualFileName = () => newName ?? file.name;
       const getActualFilePath = () => joinPath(pathToBlank, getActualFileName());
 
@@ -87,9 +87,9 @@ export default class BlanksHandler {
           ...templateHandlerParameters,
           template: file.name,
         });
-
         newName = templateHandler.replaceHashes();
-        fse.renameSync(oldPath, getActualFilePath());
+        fse.renameSync(prevPath, getActualFilePath());
+        prevPath = joinPath(pathToBlank, newName);
       }
 
       const fileIsOptional = file.name[file.name.length - 1] === '^';
@@ -101,7 +101,7 @@ export default class BlanksHandler {
         fileIsOptional && optionalFileIsSelected
       ) {
         newName = getActualFileName().slice(0, -1);
-        fse.renameSync(oldPath, getActualFilePath());
+        fse.renameSync(prevPath, getActualFilePath());
       } else if (fileIsOptional) {
         fse.removeSync(getActualFilePath());
 
