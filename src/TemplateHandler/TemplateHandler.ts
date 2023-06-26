@@ -1,6 +1,5 @@
 import { TemplateHandlerConstructorParams } from './types';
 import formatters from './formatters';
-import * as console from 'console';
 
 export default class TemplateHandler {
   /**
@@ -39,6 +38,10 @@ export default class TemplateHandler {
     this.data = params.data;
     this.hashEdges = params.hashEdges;
 
+    if (params.formatters) {
+      this.formatters = { ...this.formatters, ...params.formatters };
+    }
+
     const [prf, pst] = this.hashEdges;
 
     this.regExToFindHashes = new RegExp(`(?<=\\${prf})(.*?)(?=\\${pst})`, 'g');
@@ -65,6 +68,12 @@ export default class TemplateHandler {
 
       if (hashInner.includes(':')) {
         const [leftPart, formatter] = hashInner.split(':');
+
+        if (!this.data[leftPart]) return;
+        if (!this.formatters[formatter]) {
+          throw new Error(`Formatter "${formatter}" does not exist`);
+        }
+
         let value = String(this.data[leftPart]);
 
         if (formatter in this.formatters) {
@@ -73,6 +82,7 @@ export default class TemplateHandler {
 
         hashValueRecord[hashInner] = value;
       } else {
+        if (!this.data[hashInner]) return;
         hashValueRecord[hashInner] = String(this.data[hashInner]);
       }
     });
