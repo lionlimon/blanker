@@ -8,11 +8,11 @@ const startTemplateQuiz = async (params: TemplateQuizParameters) => {
 
   const templateAnswers = await inquirer
     .prompt<{ selectedTemplate: string }>([{
-      type: 'list',
-      name: 'selectedTemplate',
-      message: 'What template do you want to use?',
-      choices: templateFileListStyled,
-    }]);
+    type: 'list',
+    name: 'selectedTemplate',
+    message: 'What template do you want to use?',
+    choices: templateFileListStyled,
+  }]);
 
   return templateAnswers.selectedTemplate;
 };

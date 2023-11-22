@@ -18,19 +18,19 @@ const startQuiz = async (params: QuizParameters) => {
 
   const answers = await inquirer
     .prompt<QuizResult>([
-      ...(needName ? [{
-        type: 'input',
-        name: 'entityName',
-        message: 'What is the name of the entity?',
-      }] : []),
+    ...(needName ? [{
+      type: 'input',
+      name: 'entityName',
+      message: 'What is the name of the entity?',
+    }] : []),
 
-      ...(needFiles ? [{
-        type: 'checkbox',
-        name: 'files',
-        message: 'What optional files do you want to include?',
-        choices: optionalFileListStyled,
-      }] : []),
-    ]);
+    ...(needFiles ? [{
+      type: 'checkbox',
+      name: 'files',
+      message: 'What optional files do you want to include?',
+      choices: optionalFileListStyled,
+    }] : []),
+  ]);
 
   // Remove emoji
   const clearedOptionalFileNames = answers.files?.map((file) => file.slice(2).trim());

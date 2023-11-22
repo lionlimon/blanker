@@ -1,5 +1,7 @@
 import { join as joinPath } from 'path';
-import fse, { readdirSync } from 'fs-extra';
+import {
+  readdirSync, removeSync, renameSync, readFileSync, writeFileSync,
+} from 'fs-extra';
 import { FilesHandlerConstructorParams } from './types';
 import {
   ENTITY_NAME_HASH,
@@ -88,7 +90,7 @@ export default class BlanksHandler {
           template: file.name,
         });
         newName = templateHandler.replaceHashes();
-        fse.renameSync(prevPath, getActualFilePath());
+        renameSync(prevPath, getActualFilePath());
         prevPath = joinPath(pathToBlank, newName);
       }
 
@@ -101,9 +103,9 @@ export default class BlanksHandler {
         fileIsOptional && optionalFileIsSelected
       ) {
         newName = getActualFileName().slice(0, -1);
-        fse.renameSync(prevPath, getActualFilePath());
+        renameSync(prevPath, getActualFilePath());
       } else if (fileIsOptional) {
-        fse.removeSync(getActualFilePath());
+        removeSync(getActualFilePath());
 
         return;
       }
@@ -111,14 +113,14 @@ export default class BlanksHandler {
       if (file.isDirectory()) {
         this.modifyBlank(getActualFilePath());
       } else {
-        const fileContent = fse.readFileSync(getActualFilePath(), 'utf8');
+        const fileContent = readFileSync(getActualFilePath(), 'utf8');
 
         const templateHandler = new TemplateHandler({
           ...templateHandlerParameters,
           template: fileContent,
         });
 
-        fse.writeFileSync(getActualFilePath(), templateHandler.replaceHashes(), 'utf8');
+        writeFileSync(getActualFilePath(), templateHandler.replaceHashes(), 'utf8');
       }
     });
   }
