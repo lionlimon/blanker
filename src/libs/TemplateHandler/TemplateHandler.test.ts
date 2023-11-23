@@ -1,5 +1,5 @@
 import { describe, it, expect } from '@jest/globals';
-import TemplateHandler from './TemplateHandler';
+import { TemplateHandler } from './TemplateHandler';
 import { TemplateHandlerConstructorParams } from './types';
 
 const getTemplateHandler = (

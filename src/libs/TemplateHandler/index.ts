@@ -1,0 +1,1 @@
+export { TemplateHandler } from './TemplateHandler';

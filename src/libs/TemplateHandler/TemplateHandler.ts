@@ -1,7 +1,7 @@
 import { TemplateHandlerConstructorParams } from './types';
-import formatters from './formatters';
+import { formatters } from './formatters';
 
-export default class TemplateHandler {
+export class TemplateHandler {
   /**
    * Original template
    */

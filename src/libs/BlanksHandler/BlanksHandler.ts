@@ -9,11 +9,11 @@ import {
   HASH_PREFIX,
   OPTIONAL_FILE_CHAR,
   TEMPLATE_FOLDER_PREFIX,
-} from '../constants';
+} from '../../constants';
 import { TemplateHandlerConstructorParams } from '../TemplateHandler/types';
-import TemplateHandler from '../TemplateHandler';
+import { TemplateHandler } from '../TemplateHandler';
 
-export default class BlanksHandler {
+export class BlanksHandler {
   /**
    * Optional files selected by the user
    */

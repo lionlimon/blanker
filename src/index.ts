@@ -2,7 +2,7 @@
 import { join as joinPath, resolve } from 'path';
 import { copySync } from 'fs-extra';
 import initCommand from './command';
-import BlanksHandler from './BlanksHandler';
+import { BlanksHandler } from './libs/BlanksHandler';
 import { DEST_PATH, TEMPLATE_EXAMPLES_PATH } from './constants';
 import { HandlerParameters } from './types';
 import { startMainQuiz, startTemplateQuiz } from './quiz';
