@@ -40,7 +40,10 @@ import { startMainQuiz, startTemplateQuiz } from './quiz';
     }
   }
 
-  const needOptionalFiles = !parameters.selectedOptionalFiles.length && allOptionalFiles.length > 0;
+  const needOptionalFiles = !options.required
+    && !parameters.selectedOptionalFiles.length
+    && allOptionalFiles.length > 0;
+
   const needMainQuiz = !parameters.name || needOptionalFiles;
 
   if (needMainQuiz) {

@@ -23,7 +23,6 @@ Options:
   -o, --optional            include all optional files
   -d, --dev                 enable dev mode
   -r, --required            include only required files
-  -f, --find-template       find template upper if files doesn't exist in current directory
   -i, --include [files...]  include optional files by file names list
   -h, --help                display help for command
 ```

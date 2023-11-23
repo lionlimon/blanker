@@ -11,7 +11,6 @@ const initCommand = () => {
         .option('-o, --optional', 'include all optional files')
         .option('-d, --dev', 'enable dev mode')
         .option('-r, --required', 'include only required files')
-        .option('-f, --find-template', 'find template upper if files doesn\'t exist in current directory')
         .option('-i, --include [files...]', 'include optional files by file names list')
         .parse();
     const { args } = commander_1.program;
