@@ -8,7 +8,7 @@ Blanker is CLI for creating typical folders of yours project by blanks
 
 ## Installation
 ```bash 
-sudo npm i blanker -g
+sudo npm i blanker
 ```
 
 ## Command
