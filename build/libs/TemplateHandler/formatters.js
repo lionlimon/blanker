@@ -1,21 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.formatters = void 0;
+const formatters_1 = require("../formatters");
 exports.formatters = {
-    kebabCase(value) {
-        return value
-            .replace(/([a-z])([A-Z])/g, '$1-$2')
-            .replace(/[\s_]+/g, '-')
-            .toLowerCase();
-    },
-    camelCase(value) {
-        return value
-            .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => (index === 0 ? word.toLowerCase() : word.toUpperCase()))
-            .replace(/\s+|-/g, '');
-    },
-    pascalCase(value) {
-        return (value.match(/[a-zA-Z0-9]+/g) || [])
-            .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`).join('');
-    },
+    kebabCase: formatters_1.kebabCase,
+    camelCase: formatters_1.camelCase,
+    pascalCase: formatters_1.pascalCase,
+    snakeCase: formatters_1.snakeCase,
 };
 //# sourceMappingURL=formatters.js.map
