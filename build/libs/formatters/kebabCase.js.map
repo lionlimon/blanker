@@ -1,0 +1,1 @@
+{"version":3,"file":"kebabCase.js","sourceRoot":"","sources":["../../../src/libs/formatters/kebabCase.ts"],"names":[],"mappings":";;;AAAA,mCAAyC;AAElC,MAAM,SAAS,GAAG,CAAC,KAAa,EAAE,EAAE,CAAC,IAAA,sBAAc,EAAC,KAAK,CAAC;KAC9D,GAAG,CAAC,IAAI,CAAC,EAAE,CAAC,IAAI,CAAC,WAAW,EAAE,CAAC;KAC/B,IAAI,CAAC,GAAG,CAAC,CAAC;AAFA,QAAA,SAAS,aAET"}
